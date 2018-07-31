@@ -1,0 +1,6 @@
+{
+  "extends": [
+		"airbnb", // Best practices
+		"prettier" // Style
+	],
+}
