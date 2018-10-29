@@ -1,6 +1,9 @@
-# React Bootstrap
+# Mortgage Calculator
 
-React boilerplate project for Manchester Codes' projects.
+## Challenge
+Create React application that allows users to input a rate, number of years and principal and will display the monthly repayment amount.
+
+The logic to calculate a monthly repayment is provided in `src/utils/calculate-repayment.js`
 
 ## Getting Started
 
@@ -13,7 +16,7 @@ git clone git@github.com:MCRcodes/react-bootstrap.git <your_project_name>
 ### Install dependencies
 
 ```bash
-npm i
+npm install
 ```
 
 ### Start up the application:
@@ -24,10 +27,4 @@ npm start
 
 ### Visit `localhost:8080` in your browser.
 
-You should see a **Hello World** message.
-
-### Change the rendered output
-
-You can change what is mounted to the DOM in `src/index.jsx`. 
-
-It might be a good idea to make an `App` component inside `App.jsx` (will likely handle your layout and routing), and to mount this to the DOM.
+You should see a **Hello** message.
