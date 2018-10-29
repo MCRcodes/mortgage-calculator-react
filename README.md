@@ -10,7 +10,7 @@ The logic to calculate a monthly repayment is provided in `src/utils/calculate-r
 ### Clone down this repository (replace `<your_project_name>`:
 
 ```bash
-git clone git@github.com:MCRcodes/react-bootstrap.git <your_project_name>
+git clone git@github.com:MCRcodes/mortgage-calculator-react.git <your_project_name>
 ```
 
 ### Install dependencies
