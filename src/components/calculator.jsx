@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import calculateMonthlyRepayment from '../utils/calculate-repayment';
 import InputField from './input-field';
 import Button from './button';
+import config from './config';
 
 class App extends Component {
   constructor() {
@@ -32,6 +33,7 @@ class App extends Component {
   handleOnSubmit = (event) => {
     event.preventDefault();
     const { years, rate, principal } = this.state;
+
     const repayment = calculateMonthlyRepayment(rate, years, principal);
 
     this.setState({ repayment });
@@ -47,42 +49,32 @@ class App extends Component {
   };
 
   render() {
-    const {
-      years, rate, principal, repayment,
-    } = this.state;
-
     return (
       <div>
         <form onSubmit={this.handleOnSubmit}>
-          <InputField
-            label="Rate"
-            type="number"
-            handleOnChange={this.handleRate}
-            value={rate}
-          />
-          <InputField
-            label="Years"
-            type="number"
-            handleOnChange={this.handleYears}
-            value={years}
-          />
-          <InputField
-            label="Borrowing ammount"
-            type="number"
-            handleOnChange={this.handlePrincipal}
-            value={principal}
-          />
-          <Button
-            type="submit"
-            label="Calculate"
-          />
-          <Button
-            type="button"
-            handleOnclick={this.handleClear}
-            label="Clear"
-          />
+          {
+            config.inputs.map(input => (
+              <InputField
+                key={input.label}
+                label={input.label}
+                type={input.type}
+                handleOnChange={this[input.handleOnChange]}
+                value={this.state[input.value]}
+              />
+            ))
+          }
+          {
+            config.buttons.map(button => (
+              <Button
+                key={button.label}
+                type={button.type}
+                label={button.label}
+                handleOnclick={this[button.handleOnClick]}
+              />
+            ))
+          }
         </form>
-        <p>Your monthly repayment is: {repayment}</p>
+        <p>Your monthly repayment is: {this.state.repayment}</p>
       </div>
     );
   }
