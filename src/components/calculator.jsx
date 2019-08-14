@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import calculateMonthlyRepayment from '../utils/calculate-repayment';
+import InputField from './input-field';
+import Button from './button';
 
 class App extends Component {
   constructor() {
@@ -45,27 +47,42 @@ class App extends Component {
    };
 
    render() {
-     console.log(this.state);
-     const { years, rate, principal } = this.state;
+     const {
+       years, rate, principal, repayment,
+     } = this.state;
+
      return (
        <div>
          <form onSubmit={this.handleOnSubmit}>
-           <div>
-                Rate:
-            <input type="number" onChange={this.handleRate} value={rate} />
-          </div>
-           <div>
-                  Years:
-            <input type="number" onChange={this.handleYears} value={years} />
-          </div>
-           <div>
-                  Borrowing ammount:
-            <input type="number" onChange={this.handlePrincipal} value={principal} />
-          </div>
-           <button type="submit">Calculate</button>
-           <button type="button" onClick={this.handleClear}>Clear</button>
+           <InputField
+             label="Rate"
+             type="number"
+             handleOnChange={this.handleRate}
+             value={rate}
+           />
+           <InputField
+             label="Years"
+             type="number"
+             handleOnChange={this.handleYears}
+             value={years}
+           />
+           <InputField
+             label="Borrowing ammount"
+             type="number"
+             handleOnChange={this.handlePrincipal}
+             value={principal}
+           />
+           <Button
+             type="submit"
+             label="Calculate"
+           />
+           <Button
+             type="button"
+             handleOnclick={this.handleClear}
+             label="Clear"
+           />
          </form>
-         <p>Your monthly repayment is: {this.state.repayment}</p>
+         <p>Your monthly repayment is: {repayment}</p>
        </div>
      );
    }
